@@ -12,7 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * Created by George Thomas on 29/9/21
  */
 @AndroidEntryPoint
-class SplashActivity:AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
 
     private lateinit var mBinder: ActivitySplashBinding
 

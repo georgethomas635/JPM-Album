@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * Created by George Thomas on 29/9/21
  */
 @AndroidEntryPoint
-class GalleryFragment:Fragment() {
+class GalleryFragment : Fragment() {
 
     private lateinit var mBinding: FragmentGalleryBinding
     private val mainViewModel: MainViewModel by viewModels()
@@ -36,6 +36,7 @@ class GalleryFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         init()
     }
+
     private fun init() {
         mBinding.viewModel = mainViewModel
         mBinding.rvGiph.apply {

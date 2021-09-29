@@ -8,6 +8,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    def propsFile = rootProject.file('key.properties')
+    def props = new Properties()
+    props.load(new FileInputStream(propsFile))
+
     defaultConfig {
         applicationId "com.geo.album"
         minSdkVersion 24
@@ -20,8 +24,21 @@ android {
 
     buildTypes {
         release {
+            buildConfigField "String", "BASE_URL", '"https://jsonplaceholder.typicode.com/"'
+            buildConfigField("String", "DB_PASSPHRASE", props['DB_PASSPHRASE'])
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "String", "BASE_URL", '"https://jsonplaceholder.typicode.com/"'
+            buildConfigField("String", "DB_PASSPHRASE", props['DB_PASSPHRASE'])
+
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "GiphyApp" + ".apk"
+                }
+            }
         }
     }
     compileOptions {
