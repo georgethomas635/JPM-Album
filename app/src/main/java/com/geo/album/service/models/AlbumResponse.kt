@@ -8,5 +8,5 @@ import com.google.gson.annotations.SerializedName
 data class AlbumResponse(
     @SerializedName("id") val id: Int,
     @SerializedName("userId") val userId: Int,
-    @SerializedName("title") val title: Int
+    @SerializedName("title") val title: String
 )

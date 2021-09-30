@@ -2,8 +2,6 @@ package com.geo.album.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.geo.album.R
 import com.geo.album.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,7 +12,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinder = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        mBinder = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mBinder.root)
 
     }
 }

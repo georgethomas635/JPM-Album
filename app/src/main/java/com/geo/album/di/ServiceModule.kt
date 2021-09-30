@@ -16,7 +16,7 @@ import dagger.hilt.components.SingletonComponent
 class ServiceModule {
 
     @Provides
-    fun provideGiphyService(apiBuilder: ApiBuilder): AlbumService {
+    fun provideAlbumService(apiBuilder: ApiBuilder): AlbumService {
         return apiBuilder.getService(AlbumService::class.java)
     }
 

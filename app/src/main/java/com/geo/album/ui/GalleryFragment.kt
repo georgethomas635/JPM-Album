@@ -35,13 +35,14 @@ class GalleryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         init()
+        mainViewModel.getAlbumList()
     }
 
     private fun init() {
         mBinding.viewModel = mainViewModel
         mBinding.rvGiph.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = albumAdapter
+//            adapter = albumAdapter
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
 

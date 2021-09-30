@@ -1,5 +1,6 @@
 package com.geo.album.service.album
 
+import android.util.Log
 import com.geo.album.domain.album.MainRepository
 import com.geo.album.domain.models.AlbumResult
 import com.geo.album.service.models.AlbumMapper
@@ -17,6 +18,7 @@ class MainRepositoryImpl @Inject constructor(private val albumService: AlbumServ
             result = AlbumMapper().transform(albumResponse)
         } catch (throwable: Throwable) {
             //TODO: Handle API Error
+            Log.e("Exception",throwable.message.toString())
         }
         return result
     }

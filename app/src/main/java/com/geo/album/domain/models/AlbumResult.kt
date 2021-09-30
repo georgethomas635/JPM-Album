@@ -5,5 +5,5 @@ package com.geo.album.domain.models
  */
 data class AlbumResult(
     val id: Int,
-    val title: Int
+    val title: String
 )
