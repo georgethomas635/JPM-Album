@@ -23,13 +23,6 @@ android {
     }
 
     buildTypes {
-        release {
-            buildConfigField "String", "BASE_URL", '"https://jsonplaceholder.typicode.com/"'
-            buildConfigField("String", "DB_PASSPHRASE", props['DB_PASSPHRASE'])
-
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
         debug {
             buildConfigField "String", "BASE_URL", '"https://jsonplaceholder.typicode.com/"'
             buildConfigField("String", "DB_PASSPHRASE", props['DB_PASSPHRASE'])
@@ -40,6 +33,14 @@ android {
                 }
             }
         }
+        release {
+            buildConfigField "String", "BASE_URL", '"https://jsonplaceholder.typicode.com/"'
+            buildConfigField("String", "DB_PASSPHRASE", props['DB_PASSPHRASE'])
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
