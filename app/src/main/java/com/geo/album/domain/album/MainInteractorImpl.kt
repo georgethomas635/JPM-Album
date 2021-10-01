@@ -14,13 +14,13 @@ class MainInteractorImpl @Inject constructor(val repository: MainRepository) : M
             /**
              * Fetch data from local Database
              */
-            val albumListLocal=repository.getAlbumListFromDB()
+            val albumListLocal = repository.getAlbumListFromDB()
             emit(albumListLocal)
 
             /**
              * Fetch album list from server
              */
-            val albumList= repository.getAlbumList()
+            val albumList = repository.getAlbumList()
             albumList.sortBy { it.title }
             emit(albumList)
 

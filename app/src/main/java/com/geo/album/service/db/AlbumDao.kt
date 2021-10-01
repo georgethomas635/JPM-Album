@@ -15,5 +15,5 @@ interface AlbumDao {
     fun insertAlbums(albumResponse: List<AlbumResult>)
 
     @Query("Select * from album ORDER BY title")
-    fun getAlbums():List<AlbumResult>
+    fun getAlbums(): List<AlbumResult>
 }

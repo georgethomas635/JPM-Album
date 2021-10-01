@@ -10,5 +10,5 @@ interface MainRepository {
 
     suspend fun getAlbumListFromDB(): ArrayList<AlbumResult>
 
-    suspend fun saveAlbumListToDB(albumList:ArrayList<AlbumResult>)
+    suspend fun saveAlbumListToDB(albumList: ArrayList<AlbumResult>)
 }

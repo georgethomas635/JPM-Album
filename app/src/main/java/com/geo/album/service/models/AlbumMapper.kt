@@ -7,12 +7,14 @@ import com.geo.album.domain.models.AlbumResult
  */
 class AlbumMapper {
     fun transform(response: ArrayList<AlbumResponse>): ArrayList<AlbumResult> {
-        val albumResult= ArrayList<AlbumResult>()
-        if(response!=null){
-            for(item in response){
-                albumResult.add(AlbumResult(
-                    id=item.id,
-                    title=item.title)
+        val albumResult = ArrayList<AlbumResult>()
+        if (response != null) {
+            for (item in response) {
+                albumResult.add(
+                    AlbumResult(
+                        id = item.id,
+                        title = item.title
+                    )
                 )
             }
         }

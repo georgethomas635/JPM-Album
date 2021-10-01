@@ -10,8 +10,9 @@ import javax.inject.Inject
 /**
  * Created by George Thomas on 29/9/21
  */
-class MainRepositoryImpl @Inject constructor(private val albumService: AlbumService,
-                                             private val albumDao: AlbumDao
+class MainRepositoryImpl @Inject constructor(
+    private val albumService: AlbumService,
+    private val albumDao: AlbumDao
 ) : MainRepository {
 
     override suspend fun getAlbumList(): ArrayList<AlbumResult> {
@@ -21,7 +22,7 @@ class MainRepositoryImpl @Inject constructor(private val albumService: AlbumServ
             result = AlbumMapper().transform(albumResponse)
         } catch (throwable: Throwable) {
             //TODO: Handle API Error
-            Log.e("Exception",throwable.message.toString())
+            Log.e("Exception", throwable.message.toString())
         }
         return result
     }
