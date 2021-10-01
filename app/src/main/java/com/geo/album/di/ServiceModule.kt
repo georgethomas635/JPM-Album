@@ -1,8 +1,10 @@
 package com.geo.album.di
 
 import com.geo.album.BuildConfig
+import com.geo.album.data.AppDatabase
 import com.geo.album.service.album.AlbumService
 import com.geo.album.service.album.ApiBuilder
+import com.geo.album.service.db.AlbumDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,5 +25,10 @@ class ServiceModule {
     @Provides
     fun provideAPIBuilder(): ApiBuilder {
         return ApiBuilder.getInstance(BuildConfig.BASE_URL)
+    }
+
+    @Provides
+    fun provideProfileDao(appDatabase: AppDatabase): AlbumDao {
+        return appDatabase.albumDao()
     }
 }

@@ -11,9 +11,23 @@ import javax.inject.Inject
 class MainInteractorImpl @Inject constructor(val repository: MainRepository) : MainInteractor {
     override suspend fun getAlbumList(): Flow<ArrayList<AlbumResult>> {
         return flow {
-            //TODO: set bd caching
+            /**
+             * Fetch data from local Database
+             */
+            val albumListLocal=repository.getAlbumListFromDB()
+            emit(albumListLocal)
+
+            /**
+             * Fetch album list from server
+             */
             val albumList= repository.getAlbumList()
+            albumList.sortBy { it.title }
             emit(albumList)
+
+            /**
+             * Save album list in local database
+             */
+            repository.saveAlbumListToDB(albumList)
         }
     }
 }
