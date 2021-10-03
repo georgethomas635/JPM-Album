@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.geo.album.R
 import com.geo.album.databinding.FragmentGalleryBinding
 import com.geo.album.ui.adapters.AlbumAdapter
+import com.geo.album.utils.AppUtils
 import com.geo.album.viewmodel.MainViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -34,17 +37,38 @@ class GalleryFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        getAlbumList()
         init()
+        setShareOption()
         mainViewModel.getAlbumList()
     }
 
+    private fun getAlbumList() {
+        if (AppUtils.isOnline(requireContext())) {
+            mainViewModel.getAlbumList().observe(viewLifecycleOwner) {
+                albumAdapter.updateItem(it)
+            }
+        }else{
+            noNetworkError()
+        }
+    }
+
     private fun init() {
-        mBinding.viewModel = mainViewModel
         mBinding.rvGiph.apply {
             layoutManager = LinearLayoutManager(context)
-//            adapter = albumAdapter
+            adapter = albumAdapter
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
 
+    }
+
+    private fun setShareOption() {
+        albumAdapter.onItemClick={
+            AppUtils.shareWith(it,requireContext())
+        }
+    }
+
+    private fun noNetworkError() {
+        requireActivity().currentFocus?.let { Snackbar.make(it,resources.getString(R.string.message_connection_lost), Snackbar.LENGTH_LONG).show() }
     }
 }

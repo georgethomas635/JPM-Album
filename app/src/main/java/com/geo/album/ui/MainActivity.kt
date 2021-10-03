@@ -14,6 +14,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinder = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinder.root)
-
     }
 }

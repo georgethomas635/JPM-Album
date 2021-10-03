@@ -3,17 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-
-        <import type="android.view.View" />
-
         <variable
             name="viewModel"
             type="com.geo.album.viewmodel.MainViewModel" />
+        <import type="android.view.View"/>
     </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -24,7 +21,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="5"
+            android:background="@color/bg_light_shade"
             tools:listitem="@layout/item_album" />
 
         <com.airbnb.lottie.LottieAnimationView
@@ -33,10 +32,11 @@
             android:layout_height="200dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
+            android:visibility="@{viewModel.loadingIndicator ? View.VISIBLE: View.GONE}"
             app:lottie_rawRes="@raw/not_found" />
 
 

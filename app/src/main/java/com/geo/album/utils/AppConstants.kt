@@ -5,6 +5,8 @@ package com.geo.album.utils
  */
 object AppConstants {
 
+    const val PLAIN_TEXT="text/plain"
+
     //DATABASE
     const val DATABASE_NAME = "Album_database"
 }
