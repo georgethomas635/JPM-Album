@@ -20,7 +20,7 @@ class MainViewModel @Inject constructor(
     private val interactor: MainInteractor
 ) : ViewModel() {
 
- var loadingIndicator=ObservableBoolean(false)
+    var loadingIndicator = ObservableBoolean(false)
 
     fun getAlbumList(): MutableLiveData<ArrayList<AlbumResult>> {
         loadingIndicator.set(true)

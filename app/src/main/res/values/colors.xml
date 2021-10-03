@@ -5,6 +5,7 @@
     <color name="colorAccent">#FFE714</color>
 
     <color name="bg_light">#802F6699</color>
+    <color name="text_black">#021A30</color>
     <color name="bg_light_shade">#80D7E1EA</color>
     <color name="md_white_1000">#FAFAFA</color>
 </resources>

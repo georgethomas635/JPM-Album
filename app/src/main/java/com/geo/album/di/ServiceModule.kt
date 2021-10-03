@@ -2,8 +2,8 @@ package com.geo.album.di
 
 import com.geo.album.BuildConfig
 import com.geo.album.data.AppDatabase
+import com.geo.album.service.ApiBuilder
 import com.geo.album.service.album.AlbumService
-import com.geo.album.service.album.ApiBuilder
 import com.geo.album.service.db.AlbumDao
 import dagger.Module
 import dagger.Provides

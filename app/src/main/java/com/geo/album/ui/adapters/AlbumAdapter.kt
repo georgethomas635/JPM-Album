@@ -9,15 +9,15 @@ import com.geo.album.domain.models.AlbumResult
 /**
  * Created by George Thomas on 29/9/21
  */
-class AlbumAdapter(): RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
+class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
 
-    private val albumList=ArrayList<AlbumResult>()
+    private val albumList = ArrayList<AlbumResult>()
     var onItemClick: ((String) -> Unit)? = null
 
 
-    class ViewHolder(val view: ItemAlbumBinding): RecyclerView.ViewHolder(view.root) {
+    class ViewHolder(val view: ItemAlbumBinding) : RecyclerView.ViewHolder(view.root) {
         fun bind(albumResult: AlbumResult, onItemClick: ((String) -> Unit)?) {
-            view.viewModel=albumResult
+            view.viewModel = albumResult
             view.imgShare.setOnClickListener {
                 onItemClick?.invoke(albumResult.title)
             }
@@ -31,14 +31,14 @@ class AlbumAdapter(): RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(albumList[position],onItemClick)
+        holder.bind(albumList[position], onItemClick)
     }
 
     override fun getItemCount(): Int {
         return albumList.size
     }
 
-    fun updateItem(  albums:ArrayList<AlbumResult>){
+    fun updateItem(albums: ArrayList<AlbumResult>) {
         albumList.clear()
         albumList.addAll(albums)
         notifyDataSetChanged()

@@ -8,7 +8,8 @@ import javax.inject.Inject
 /**
  * Created by George Thomas on 29/9/21
  */
-class MainInteractorImpl @Inject constructor(val repository: MainRepository) : MainInteractor {
+class MainInteractorImpl @Inject constructor(private val repository: MainRepository) :
+    MainInteractor {
     override suspend fun getAlbumList(): Flow<ArrayList<AlbumResult>> {
         return flow {
             /**

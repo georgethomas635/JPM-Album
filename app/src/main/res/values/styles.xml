@@ -12,10 +12,6 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
     <style name="TextAppearance.AppCompat.Display3.brand_name">
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
@@ -24,6 +20,7 @@
 
     <style name="title_text">
         <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_black</item>
         <item name="android:paddingEnd">20dp</item>
         <item name="android:paddingBottom">20dp</item>
         <item name="android:fontFamily">@font/bentham_regular</item>

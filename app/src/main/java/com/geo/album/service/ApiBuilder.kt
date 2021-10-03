@@ -1,4 +1,4 @@
-package com.geo.album.service.album
+package com.geo.album.service
 
 import androidx.databinding.library.baseAdapters.BuildConfig
 import okhttp3.OkHttpClient

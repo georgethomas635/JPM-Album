@@ -47,13 +47,13 @@ class GalleryFragment : Fragment() {
             mainViewModel.getAlbumList().observe(viewLifecycleOwner) {
                 albumAdapter.updateItem(it)
             }
-        }else{
+        } else {
             noNetworkError()
         }
     }
 
     private fun init() {
-        mBinding.rvGiph.apply {
+        mBinding.rvAlbums.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = albumAdapter
         }
@@ -61,12 +61,18 @@ class GalleryFragment : Fragment() {
     }
 
     private fun setShareOption() {
-        albumAdapter.onItemClick={
-            AppUtils.shareWith(it,requireContext())
+        albumAdapter.onItemClick = {
+            AppUtils.shareWith(it, requireContext())
         }
     }
 
     private fun noNetworkError() {
-        requireActivity().currentFocus?.let { Snackbar.make(it,resources.getString(R.string.message_connection_lost), Snackbar.LENGTH_LONG).show() }
+        requireActivity().currentFocus?.let {
+            Snackbar.make(
+                it,
+                resources.getString(R.string.message_connection_lost),
+                Snackbar.LENGTH_LONG
+            ).show()
+        }
     }
 }

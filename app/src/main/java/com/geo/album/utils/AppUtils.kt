@@ -21,7 +21,7 @@ object AppUtils {
         return online
     }
 
-    fun shareWith(text: String,context: Context) {
+    fun shareWith(text: String, context: Context) {
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
         intent.type = AppConstants.PLAIN_TEXT
