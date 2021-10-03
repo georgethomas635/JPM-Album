@@ -27,6 +27,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun navigateToMain() {
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     companion object {
