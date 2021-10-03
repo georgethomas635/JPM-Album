@@ -14,13 +14,13 @@ The following components must be installed in order to go through the Usage Inst
 ## Set Up and Compile
  Clone this repository and import into **Android Studio**
 
-##Import to Android Studio
+## Import to Android Studio
 
 1. Open Android Studio and select the "Import project" menu item in the welcome screen.
 2. Navigate to the location where you checked out the repository in your computer, and select the debug folder.
 3. Android Studio should be able to import the debug project automatically, which includes the library itself and a minimal test app.
 
-##Structure
+## Structure
 
 - build.gradle - root gradle config file
 - settings.gradle - root gradle settings file
