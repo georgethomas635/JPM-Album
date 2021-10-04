@@ -37,10 +37,16 @@ class GalleryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         handleErrorState()
+        checkInternetConnection()
         getAlbumList()
         init()
         setShareOption()
-        mainViewModel.getAlbumList()
+    }
+
+    private fun checkInternetConnection() {
+        if (!AppUtils.isOnline(requireContext())) {
+            showErrorMessage(resources.getString(R.string.message_connection_lost))
+        }
     }
 
     private fun handleErrorState() {
@@ -50,12 +56,8 @@ class GalleryFragment : Fragment() {
     }
 
     private fun getAlbumList() {
-        if (AppUtils.isOnline(requireContext())) {
-            mainViewModel.getAlbumList().observe(viewLifecycleOwner) {
-                albumAdapter.updateItem(it)
-            }
-        } else {
-            showErrorMessage(resources.getString(R.string.message_connection_lost))
+        mainViewModel.getAlbumList().observe(viewLifecycleOwner) {
+            albumAdapter.updateItem(it)
         }
     }
 

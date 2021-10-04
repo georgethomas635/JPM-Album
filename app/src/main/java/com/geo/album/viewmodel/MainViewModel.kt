@@ -21,6 +21,7 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     var loadingIndicator = ObservableBoolean(false)
+    var isEmptyList = ObservableBoolean(false)
 
     fun getAlbumList(): MutableLiveData<ArrayList<AlbumResult>> {
         loadingIndicator.set(true)
@@ -28,7 +29,11 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             interactor.getAlbumList().collect { result ->
                 loadingIndicator.set(false)
-                albumResult.postValue(result)
+                if(result.size>0) {
+                    albumResult.postValue(result)
+                }else{
+                    isEmptyList.set(true)
+                }
             }
         }
         return albumResult

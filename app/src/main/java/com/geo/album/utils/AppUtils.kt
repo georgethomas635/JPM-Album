@@ -26,6 +26,6 @@ object AppUtils {
         intent.action = Intent.ACTION_SEND
         intent.type = AppConstants.PLAIN_TEXT
         intent.putExtra(Intent.EXTRA_TEXT, text)
-        context.startActivity(Intent.createChooser(intent, "Share with:"))
+        context.startActivity(Intent.createChooser(intent, AppConstants.SHARE))
     }
 }

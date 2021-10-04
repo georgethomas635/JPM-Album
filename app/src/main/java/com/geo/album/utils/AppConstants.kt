@@ -5,6 +5,7 @@ package com.geo.album.utils
  */
 object AppConstants {
 
+    const val SHARE="Share with:"
     const val PLAIN_TEXT = "text/plain"
 
     //DATABASE
