@@ -33,4 +33,7 @@ class MainViewModel @Inject constructor(
         }
         return albumResult
     }
+
+    fun checkErrorState()= interactor.getErrorMessage()
+
 }

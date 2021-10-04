@@ -1,5 +1,6 @@
 package com.geo.album.domain.album
 
+import androidx.lifecycle.MutableLiveData
 import com.geo.album.domain.models.AlbumResult
 import kotlinx.coroutines.flow.Flow
 
@@ -8,4 +9,6 @@ import kotlinx.coroutines.flow.Flow
  */
 interface MainInteractor {
     suspend fun getAlbumList(): Flow<ArrayList<AlbumResult>>
+
+    fun getErrorMessage(): MutableLiveData<String>
 }

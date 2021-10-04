@@ -1,5 +1,6 @@
 package com.geo.album.domain.album
 
+import androidx.lifecycle.MutableLiveData
 import com.geo.album.domain.models.AlbumResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -23,7 +24,9 @@ class MainInteractorImpl @Inject constructor(private val repository: MainReposit
              */
             val albumList = repository.getAlbumList()
             albumList.sortBy { it.title }
-            emit(albumList)
+            if(albumList.size>0) {
+                emit(albumList)
+            }
 
             /**
              * Save album list in local database
@@ -31,4 +34,7 @@ class MainInteractorImpl @Inject constructor(private val repository: MainReposit
             repository.saveAlbumListToDB(albumList)
         }
     }
+
+    override fun getErrorMessage():MutableLiveData<String>
+    {return repository.getErrorDetails()}
 }

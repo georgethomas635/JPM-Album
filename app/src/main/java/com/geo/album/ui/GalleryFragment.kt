@@ -36,10 +36,17 @@ class GalleryFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        handleErrorState()
         getAlbumList()
         init()
         setShareOption()
         mainViewModel.getAlbumList()
+    }
+
+    private fun handleErrorState() {
+        mainViewModel.checkErrorState().observe(viewLifecycleOwner){
+            showErrorMessage(it)
+        }
     }
 
     private fun getAlbumList() {
@@ -48,7 +55,7 @@ class GalleryFragment : Fragment() {
                 albumAdapter.updateItem(it)
             }
         } else {
-            noNetworkError()
+            showErrorMessage(resources.getString(R.string.message_connection_lost))
         }
     }
 
@@ -66,13 +73,10 @@ class GalleryFragment : Fragment() {
         }
     }
 
-    private fun noNetworkError() {
-        requireActivity().currentFocus?.let {
-            Snackbar.make(
-                it,
-                resources.getString(R.string.message_connection_lost),
-                Snackbar.LENGTH_LONG
-            ).show()
-        }
+    private fun showErrorMessage(errorMessage:String) {
+        Snackbar.make(
+            mBinding.rvAlbums,errorMessage,
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 }
