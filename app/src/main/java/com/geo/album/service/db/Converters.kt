@@ -23,11 +23,11 @@ class Converters {
     }
 
     @TypeConverter
-    fun stringArraylistToJson(arraylist: ArrayList<String>): String? =
-        Gson().toJson(arraylist)
+    fun stringArrayListToJson(arrayList: ArrayList<String>): String? =
+        Gson().toJson(arrayList)
 
     @TypeConverter
-    fun fromJsonToStringArraylist(json: String): ArrayList<String> {
+    fun fromJsonToStringArrayList(json: String): ArrayList<String> {
         val gson = GsonBuilder().create()
         return gson.fromJson(json, object : TypeToken<ArrayList<String>>() {}.type)
     }

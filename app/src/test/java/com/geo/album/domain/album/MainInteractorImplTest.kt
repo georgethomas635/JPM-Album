@@ -24,7 +24,7 @@ class MainInteractorImplTest {
     lateinit var repository: MainRepository
 
     private val albumResultList = ArrayList<AlbumResult>()
-    lateinit var albumResult: AlbumResult
+    private lateinit var albumResult: AlbumResult
 
     @Before
     fun setup() {

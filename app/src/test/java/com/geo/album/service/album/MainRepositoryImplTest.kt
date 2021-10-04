@@ -33,7 +33,7 @@ class MainRepositoryImplTest {
 
     private val albumResponse = AlbumResponse(1, 12, "Sample Title")
     private val albumList = ArrayList<AlbumResponse>()
-    lateinit var albumResultList: ArrayList<AlbumResult>
+    private lateinit var albumResultList: ArrayList<AlbumResult>
 
     @Before
     fun setup() {

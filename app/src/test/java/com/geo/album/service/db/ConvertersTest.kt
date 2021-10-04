@@ -10,14 +10,11 @@ import org.junit.Test
  */
 class ConvertersTest {
 
-    private val ARRAY_CONVERTED =
-        "[{\"id\":1,\"title\":\"consequatur autem doloribus natus consectetur\"}]"
-    lateinit var converter: Converters
+    private lateinit var converter: Converters
 
     private val arrayList = ArrayList<String>()
-    private val JSON_STRING = "[\"TestOne\",\"TestTwo\"]"
 
-    val albumResponse = AlbumResult(
+    private val albumResponse = AlbumResult(
         id = 1,
         title = "consequatur autem doloribus natus consectetur"
     )
@@ -35,28 +32,34 @@ class ConvertersTest {
     }
 
     @Test
-    fun testStringArraylistToJson() {
-        val result = converter.stringArraylistToJson(arrayList)
+    fun testStringArrayListToJson() {
+        val result = converter.stringArrayListToJson(arrayList)
         assertEquals(JSON_STRING, result)
 
     }
 
     @Test
-    fun testFromJsonToStringArraylist() {
-        val result = converter.fromJsonToStringArraylist(JSON_STRING)
+    fun testFromJsonToStringArrayList() {
+        val result = converter.fromJsonToStringArrayList(JSON_STRING)
         assertEquals(arrayList, result)
     }
 
     @Test
     fun testAlbumListToJson() {
         val result = converter.albumListToJson(albumList)
-        assertEquals(ARRAY_CONVERTED, result)
+        assertEquals(Companion.ARRAY_CONVERTED, result)
     }
 
     @Test
     fun testFromJsonToAlbumList() {
         val result = converter.fromJsonToAlbumList(ARRAY_CONVERTED)
         assertEquals(albumList, result)
+    }
+
+    companion object {
+        private const val JSON_STRING = "[\"TestOne\",\"TestTwo\"]"
+        private const val ARRAY_CONVERTED =
+            "[{\"id\":1,\"title\":\"consequatur autem doloribus natus consectetur\"}]"
     }
 
 }
