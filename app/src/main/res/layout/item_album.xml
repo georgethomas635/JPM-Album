@@ -22,7 +22,7 @@
             android:layout_margin="10dp"
             app:cardCornerRadius="6dp"
             app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@color/md_white_1000"
+            app:cardBackgroundColor="@color/card_bg"
             android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

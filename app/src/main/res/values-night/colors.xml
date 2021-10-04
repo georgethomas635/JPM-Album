@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_light">#292a33</color>
+    <color name="text_color">#FFFFFF</color>
+    <color name="bg_light_shade">#222128</color>
+    <color name="card_bg">#222128</color>
+    <color name="item_color">#FC7677</color>
+</resources>
