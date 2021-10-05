@@ -19,7 +19,7 @@ class MainViewModelTest {
     @Mock
     lateinit var interactor: MainInteractor
 
-    lateinit var viewModel:MainViewModel
+    private lateinit var viewModel:MainViewModel
 
     private val albumResultList = ArrayList<AlbumResult>()
     private lateinit var albumResult: AlbumResult

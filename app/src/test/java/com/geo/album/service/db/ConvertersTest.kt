@@ -47,7 +47,7 @@ class ConvertersTest {
     @Test
     fun testAlbumListToJson() {
         val result = converter.albumListToJson(albumList)
-        assertEquals(Companion.ARRAY_CONVERTED, result)
+        assertEquals(ARRAY_CONVERTED, result)
     }
 
     @Test
