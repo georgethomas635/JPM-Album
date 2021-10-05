@@ -21,7 +21,7 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     var loadingIndicator = ObservableBoolean(false)
-    var isEmptyList = ObservableBoolean(false)
+    val isEmptyList = ObservableBoolean(false)
 
     /**
      * Fetch album list from domain layer

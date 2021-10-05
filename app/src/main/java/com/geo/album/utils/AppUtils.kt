@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import com.geo.album.R
 
 /**
  * Created by George Thomas on 3/10/21
@@ -31,7 +32,7 @@ object AppUtils {
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
         intent.type = AppConstants.PLAIN_TEXT
-        intent.putExtra(Intent.EXTRA_TEXT, text)
+        intent.putExtra(Intent.EXTRA_TEXT, context.resources.getString(R.string.shared_from)+text)
         context.startActivity(Intent.createChooser(intent, AppConstants.SHARE))
     }
 }

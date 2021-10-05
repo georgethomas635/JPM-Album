@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="android.view.View" />
+        <import type="android.view.View"/>
 
         <variable
             name="viewModel"
@@ -24,6 +24,7 @@
             android:layout_height="0dp"
             android:background="@color/bg_light_shade"
             android:paddingBottom="10dp"
+            android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +36,7 @@
             android:id="@+id/animationLoading"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:visibility="@{viewModel.loadingIndicator? View.VISIBLE:View.GONE}"
+            android:visibility="@{viewModel.loadingIndicator ? View.VISIBLE:View.GONE }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,15 +49,14 @@
             android:id="@+id/animationNotFound"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:visibility="@{viewModel.isEmptyList? View.VISIBLE:View.GONE }"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:visibility="@{viewModel.isEmptyList ? View.VISIBLE:View.GONE }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
             app:lottie_rawRes="@raw/not_found" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
