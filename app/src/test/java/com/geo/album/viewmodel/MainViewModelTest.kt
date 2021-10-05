@@ -1,7 +1,10 @@
 package com.geo.album.viewmodel
 
 import com.geo.album.domain.album.MainInteractor
+import com.geo.album.domain.models.AlbumResult
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -16,18 +19,29 @@ class MainViewModelTest {
     @Mock
     lateinit var interactor: MainInteractor
 
+    lateinit var viewModel:MainViewModel
+
+    private val albumResultList = ArrayList<AlbumResult>()
+    private lateinit var albumResult: AlbumResult
+
     @Before
-    fun setUp() {
+    fun setup() {
         MockitoAnnotations.openMocks(this)
+        albumResult = AlbumResult(2, "consequatur autem doloribus natus consectetur")
+        albumResultList.add(albumResult)
+
+        viewModel = MainViewModel(interactor)
+
     }
 
     @Test
     fun testGetAlbumList() {
-        val viewModel = MainViewModel(interactor)
+        val flow= flow{emit(albumResultList)}
 
         runBlocking {
-            viewModel.getAlbumList()
-            Mockito.verify(interactor).getAlbumList()
+            Mockito.`when`(interactor.getAlbumList()).thenReturn(flow)
+            val result=viewModel.getAlbumList()
+            Assert.assertNotNull(result)
         }
     }
 }

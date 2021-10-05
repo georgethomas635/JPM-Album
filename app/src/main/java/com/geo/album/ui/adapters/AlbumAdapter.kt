@@ -34,10 +34,16 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
         holder.bind(albumList[position], onItemClick)
     }
 
+    /**
+     * return the number of items in album list
+     */
     override fun getItemCount(): Int {
         return albumList.size
     }
 
+    /**
+     * Update the recyclerview with latest album list
+     */
     fun updateItem(albums: ArrayList<AlbumResult>) {
         albumList.clear()
         albumList.addAll(albums)

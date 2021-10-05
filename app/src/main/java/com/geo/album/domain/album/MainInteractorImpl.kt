@@ -1,6 +1,5 @@
 package com.geo.album.domain.album
 
-import androidx.lifecycle.MutableLiveData
 import com.geo.album.domain.models.AlbumResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -24,7 +23,7 @@ class MainInteractorImpl @Inject constructor(private val repository: MainReposit
              */
             val albumList = repository.getAlbumList()
             albumList.sortBy { it.title }
-            if(albumList.size>0) {
+            if (albumList.size > 0) {
                 emit(albumList)
             }
 
@@ -35,6 +34,8 @@ class MainInteractorImpl @Inject constructor(private val repository: MainReposit
         }
     }
 
-    override fun getErrorMessage():MutableLiveData<String>
-    {return repository.getErrorDetails()}
+    /**
+     * If API call failed getErrorMessage will share the error message to ViewModel
+     */
+    override fun getErrorMessage() = repository.getErrorDetails()
 }

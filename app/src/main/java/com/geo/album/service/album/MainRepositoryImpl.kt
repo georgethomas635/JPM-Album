@@ -17,6 +17,10 @@ class MainRepositoryImpl @Inject constructor(
 
     private val errorMessage = MutableLiveData<String>()
 
+    /**
+     * AlbumService is injected using hilt
+     * getAlbumList() will fetch album list from server
+     */
     override suspend fun getAlbumList(): ArrayList<AlbumResult> {
         var result = ArrayList<AlbumResult>()
         try {
@@ -28,13 +32,11 @@ class MainRepositoryImpl @Inject constructor(
         return result
     }
 
-    override suspend fun getAlbumListFromDB(): ArrayList<AlbumResult> {
-        return albumDao.getAlbums() as ArrayList<AlbumResult>
-    }
+    override suspend fun getAlbumListFromDB(): ArrayList<AlbumResult> =
+        albumDao.getAlbums() as ArrayList<AlbumResult>
 
-    override suspend fun saveAlbumListToDB(albumList: ArrayList<AlbumResult>) {
+    override suspend fun saveAlbumListToDB(albumList: ArrayList<AlbumResult>) =
         albumDao.insertAlbums(albumList)
-    }
 
     override fun getErrorDetails() = errorMessage
 

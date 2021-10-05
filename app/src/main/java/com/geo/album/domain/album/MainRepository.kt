@@ -13,5 +13,5 @@ interface MainRepository {
 
     suspend fun saveAlbumListToDB(albumList: ArrayList<AlbumResult>)
 
-    fun getErrorDetails() : MutableLiveData<String>
+    fun getErrorDetails(): MutableLiveData<String>
 }

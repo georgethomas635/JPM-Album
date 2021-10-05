@@ -43,24 +43,36 @@ class GalleryFragment : Fragment() {
         setShareOption()
     }
 
+    /**
+     * Check Internet connection is available
+     */
     private fun checkInternetConnection() {
         if (!AppUtils.isOnline(requireContext())) {
             showErrorMessage(resources.getString(R.string.message_connection_lost))
         }
     }
 
+    /**
+     * Handle API call error cases and show the error message in Screen.
+     */
     private fun handleErrorState() {
-        mainViewModel.checkErrorState().observe(viewLifecycleOwner){
+        mainViewModel.checkErrorState().observe(viewLifecycleOwner) {
             showErrorMessage(it)
         }
     }
 
+    /**
+     * Fetch album list from server
+     */
     private fun getAlbumList() {
         mainViewModel.getAlbumList().observe(viewLifecycleOwner) {
             albumAdapter.updateItem(it)
         }
     }
 
+    /**
+     * Initialising basic view
+     */
     private fun init() {
         mBinding.rvAlbums.apply {
             layoutManager = LinearLayoutManager(context)
@@ -69,15 +81,21 @@ class GalleryFragment : Fragment() {
 
     }
 
+    /**
+     * handling share option of recyclerview item
+     */
     private fun setShareOption() {
         albumAdapter.onItemClick = {
             AppUtils.shareWith(it, requireContext())
         }
     }
 
-    private fun showErrorMessage(errorMessage:String) {
+    /**
+     * Show error messages as snackbar
+     */
+    private fun showErrorMessage(errorMessage: String) {
         Snackbar.make(
-            mBinding.rvAlbums,errorMessage,
+            mBinding.rvAlbums, errorMessage,
             Snackbar.LENGTH_LONG
         ).show()
     }

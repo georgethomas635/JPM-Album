@@ -23,15 +23,18 @@ class MainViewModel @Inject constructor(
     var loadingIndicator = ObservableBoolean(false)
     var isEmptyList = ObservableBoolean(false)
 
+    /**
+     * Fetch album list from domain layer
+     */
     fun getAlbumList(): MutableLiveData<ArrayList<AlbumResult>> {
         loadingIndicator.set(true)
         val albumResult = MutableLiveData<ArrayList<AlbumResult>>()
         viewModelScope.launch(Dispatchers.IO) {
             interactor.getAlbumList().collect { result ->
                 loadingIndicator.set(false)
-                if(result.size>0) {
+                if (result.size > 0) {
                     albumResult.postValue(result)
-                }else{
+                } else {
                     isEmptyList.set(true)
                 }
             }
@@ -39,6 +42,6 @@ class MainViewModel @Inject constructor(
         return albumResult
     }
 
-    fun checkErrorState()= interactor.getErrorMessage()
+    fun checkErrorState() = interactor.getErrorMessage()
 
 }
